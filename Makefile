@@ -6,27 +6,12 @@
 #
 include $(TOPDIR)/rules.mk
 
-LUCI_NAME:=luci-app-netports
-PKG_VERSION:=1.1.1
-
-LUCI_TITLE:=Network Interfaces Ports Status
-LUCI_PKGARCH:=all
+PKG_NAME:=luci-app-netports
+LUCI_TITLE:=LuCI support for luci-app-tn-netports
 LUCI_DEPENDS:=+luabitop
-
-LUCI_DESCRIPTION:=Network ports status LuCI application
-
-define Package/$(LUCI_NAME)/conffiles
-/etc/config/luci_netports
-endef
-
-define Package/$(LUCI_NAME)/postinst
-#!/bin/sh
-if [ ! -f /etc/config/luci_netports ]; then
-    echo "config global 'global'" > /etc/config/luci_netports
-fi
-
-define Package/$(LUCI_NAME)/prerm
-endef
+LUCI_PKGARCH:=all
+PKG_VERSION:=1.1.1
+PKG_RELEASE:=1
 
 include $(TOPDIR)/feeds/luci/luci.mk
 
