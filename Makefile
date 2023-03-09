@@ -21,8 +21,9 @@ endef
 
 define Package/$(LUCI_NAME)/postinst
 #!/bin/sh
-[ -f /etc/config/luci_netports ] || echo "config global 'global'" > /etc/config/luci_netports
-endef
+if [ ! -f /etc/config/luci_netports ]; then
+    echo "config global 'global'" > /etc/config/luci_netports
+fi
 
 define Package/$(LUCI_NAME)/prerm
 endef
